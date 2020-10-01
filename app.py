@@ -6,13 +6,13 @@ app = Flask(__name__)
 
 # Creates list of the json file
 def load_statements():
-    with open("data\politifact.json") as json_file:
+    with open("data/politifact.json") as json_file:
         data = json.load(json_file)
     return data
 
 # Loads the answer of the current statement
 def load_statement_data(statement_id):
-    with open("data\politifact.json")as f:
+    with open("data/politifact.json")as f:
         data = json.load(f)
         sdata = data[int(statement_id)]["label"]
     return sdata
