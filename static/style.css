@@ -17,10 +17,12 @@ main {
     margin: 0 auto;
     width: 90%;
     text-align: center;
+    padding-bottom: 120px;
 }
 
 body {
     background-color: rgb(255, 255, 255);
+    bottom: 120px;
 }
 
 h1 {
@@ -43,7 +45,7 @@ footer {
     width: 100%;
     margin: 0 auto;
     height: 120px;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     border-top: 5px solid #424242;
