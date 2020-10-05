@@ -2,16 +2,20 @@ from flask import Flask, render_template, redirect, url_for, request, jsonify
 import json, random, copy
 from random import randint
 from flask_socketio import SocketIO, join_room, leave_room, emit
-import game
+import tarfile
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecret'
 
+with tarfile.open("politifac_snopes.tgz") as archive:
+    archive.extract('politifact.json')
+
 # Creates list of the json file
 def load_statements():
-    with open("data/politifact.json") as json_file:
+    with open("politifact.json") as json_file:
         data = json.load(json_file)
     return data
+    #
 
 # Loads the answer of the current statement
 def load_statement_data(statement_id):
@@ -24,11 +28,6 @@ def load_source_data(statement_id):
     data = load_statements()
     temp = data[int(statement_id)]
     sourcedata = temp["sources"]
-    #sourcenumber = 0
-    #links = sourcedata[sourcenumber]
-    #sourcenumber += 1
-    #if sourcenumber == len(sourcedata):
-    #    sourcenumber = 1
     return sourcedata
 
 # Welcome Page
